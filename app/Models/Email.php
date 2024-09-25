@@ -11,7 +11,10 @@ class Email extends Model
   use HasFactory;
 
   protected $table = 'contact_emails';
-  protected $fillable = ['email'];
+  protected $fillable = [
+    'email',
+    'is_default',
+  ];
 
   public function contact()
   {

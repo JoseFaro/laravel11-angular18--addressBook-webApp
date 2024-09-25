@@ -25,6 +25,21 @@ class Contact extends Model
     return $this->hasMany(Address::class);
   }
 
+  public function defaultAddress() 
+  {
+    return $this->addresses()->where('is_default', 1);
+  }
+
+  public function defaultEmail() 
+  {
+    return $this->emails()->where('is_default', 1);
+  }
+
+  public function defaultPhone() 
+  {
+    return $this->phones()->where('is_default', 1);
+  }
+
   public function emails()
   {
     return $this->hasMany(Email::class);

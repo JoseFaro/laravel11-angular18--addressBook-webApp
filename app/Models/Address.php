@@ -11,7 +11,10 @@ class Address extends Model
   use HasFactory;
 
   protected $table = 'contact_addresses';
-  protected $fillable = ['address'];
+  protected $fillable = [
+    'address',
+    'is_default',
+  ];
 
   public function contact()
   {

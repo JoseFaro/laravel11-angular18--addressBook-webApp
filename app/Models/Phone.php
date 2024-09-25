@@ -11,7 +11,10 @@ class Phone extends Model
   use HasFactory;
 
   protected $table = 'contact_phones';
-  protected $fillable = ['phone'];
+  protected $fillable = [
+    'is_default',
+    'phone',
+  ];
 
   public function contact()
   {
