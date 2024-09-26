@@ -1,0 +1,52 @@
+<div>
+  <h3 *ngIf="isCreate" class="mb-4">CREAR CONTACTO</h3>
+  <h3 *ngIf="isUpdate" class="mb-4">ACTUALIZAR CONTACTO</h3>
+
+  <form [formGroup]="form" (ngSubmit)="handleOnSubmit()">
+    <div class="mb-4">
+      <label for="FormContactName" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="FormContactName"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="FormContactDateOfBirth" class="form-label">Cumpleaños</label>
+      <input
+        type="text"
+        class="form-control"
+        id="FormContactDateOfBirth"
+        formControlName="dateOfBirth"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="FormContactCompany" class="form-label">Empresa</label>
+      <input
+        type="text"
+        class="form-control"
+        id="FormContactCompany"
+        formControlName="company"
+      />
+    </div>
+
+    <div class="mb-5">
+      <label for="FormContactWebsite" class="form-label">Pagina web</label>
+      <input
+        type="text"
+        class="form-control"
+        id="FormContactWebsite"
+        formControlName="website"
+      />
+    </div>
+
+    <app-button
+      [label]="'Guardar'"
+      [variant]="'primary'"
+      (onClick)="handleOnSubmit()"
+    ></app-button>
+  </form>
+</div>
