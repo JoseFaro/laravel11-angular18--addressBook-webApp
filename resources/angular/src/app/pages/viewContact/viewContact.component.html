@@ -1,5 +1,118 @@
 <div class="appViewContact">
   <h3 class="mb-4">VER CONTACTO</h3>
 
-  datos aquí
+  <div class="card">
+    <div class="card-body p-5">
+      <!-- basic info -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <h5>Nombre:</h5>
+          <p class="text-muted" id="nombre">{{ contact.name }}</p>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Compañía:</h5>
+          <p *ngIf="contact.company" class="text-muted" id="compania">
+            {{ contact.company }}
+          </p>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <h5>Website:</h5>
+          <p *ngIf="contact.website" class="text-muted" id="website">
+            <a href="{{ contact.website }}" target="_blank">{{
+              contact.website
+            }}</a>
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Cumpleaños:</h5>
+          <p *ngIf="contact.dateOfBirth" class="text-muted" id="cumpleanos">
+            {{ contact.dateOfBirth }}
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- phones -->
+      <div class="mb-5 mt-5">
+        <h5 class="mb-3">Teléfonos:</h5>
+
+        <ul *ngIf="contact.phones?.length" class="list-group" id="telefonos">
+          <li
+            class="list-group-item"
+            *ngFor="let phone of contact.phones; let i = index"
+          >
+            {{ phone.phone }}
+            <span *ngIf="phone.is_default"> -- <b>Predeterminado</b></span>
+          </li>
+        </ul>
+
+        <p
+          *ngIf="!contact.phones?.length"
+          class="text-muted mt-2"
+          id="no-telefonos"
+          style="display: none"
+        >
+          No hay teléfonos disponibles.
+        </p>
+      </div>
+
+      <!-- emails -->
+      <div class="mb-5">
+        <h5 class="mb-3">Emails:</h5>
+
+        <ul *ngIf="contact.emails?.length" class="list-group" id="emails">
+          <li
+            class="list-group-item"
+            *ngFor="let email of contact.emails; let i = index"
+          >
+            {{ email.email }}
+            <span *ngIf="email.is_default"> -- <b>Predeterminado</b></span>
+          </li>
+        </ul>
+
+        <p
+          *ngIf="!contact.emails?.length"
+          class="text-muted mt-2"
+          id="no-emails"
+          style="display: none"
+        >
+          No hay correos electrónicos disponibles.
+        </p>
+      </div>
+
+      <!-- addresses -->
+      <div class="mb-4">
+        <h5 class="mb-3">Direcciones:</h5>
+
+        <ul
+          *ngIf="contact.addresses?.length"
+          class="list-group"
+          id="direcciones"
+        >
+          <li
+            class="list-group-item"
+            *ngFor="let address of contact.addresses; let i = index"
+          >
+            {{ address.address }}
+            <span *ngIf="address.is_default"> -- <b>Predeterminado</b></span>
+          </li>
+        </ul>
+
+        <p
+          *ngIf="!contact.addresses?.length"
+          class="text-muted mt-2"
+          id="no-direcciones"
+          style="display: none"
+        >
+          No hay direcciones disponibles.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
