@@ -7,11 +7,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [ButtonComponent, HttpClientModule, FormsModule, NgFor],
+  imports: [
+    ButtonComponent,
+    HttpClientModule,
+    FormsModule,
+    NgFor,
+    ScrollingModule,
+  ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss',
   providers: [ContactsService, HttpClientModule],
@@ -20,6 +27,7 @@ export class ContactsComponent {
   contacts: any[] = [];
   filteredContacts: any[] = [];
 
+  private searchChangeTimeout: any = null;
   private searchFilter = new BehaviorSubject<string>('');
   private subscription!: Subscription;
 
@@ -59,7 +67,12 @@ export class ContactsComponent {
 
   handleOnFilterChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    this.searchFilter.next(inputElement.value);
+
+    clearTimeout(this.searchChangeTimeout);
+
+    this.searchChangeTimeout = setTimeout(() => {
+      this.searchFilter.next(inputElement.value);
+    }, 300);
   }
 
   loadContacts(): void {
@@ -78,6 +91,10 @@ export class ContactsComponent {
         console.error(error);
       }
     );
+  }
+
+  trackById(index: number, item: any): number {
+    return item.id;
   }
 
   viewContact(contactId: number): void {
