@@ -1,0 +1,50 @@
+<div class="appContacts">
+  <h3 class="mb-4">CONTACTOS</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cumpleaños</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">Pagina web</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Dirección</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.dateOfBirth }}</td>
+        <td>{{ contact.company }}</td>
+        <td>{{ contact.website }}</td>
+        <td>
+          {{ contact.default_phone ? contact.default_phone[0].phone : "" }}
+        </td>
+        <td>
+          {{ contact.default_email ? contact.default_email[0].email : "" }}
+        </td>
+        <td>
+          {{
+            contact.default_address ? contact.default_address[0].address : ""
+          }}
+        </td>
+        <td>
+          <div class="actionsContainer">
+            <button type="button" class="btn btn-info btn-sm me-2">Ver</button>
+            <button type="button" class="btn btn-primary btn-sm me-2">
+              Editar
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm">
+              Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
