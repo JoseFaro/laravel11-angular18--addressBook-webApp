@@ -1,5 +1,6 @@
+import { ButtonComponent } from '../../components/button/button.component';
 import { Component } from '@angular/core';
-import { ContactsService } from '../services/contacts.service';
+import { ContactsService } from '../../services/contacts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
@@ -7,10 +8,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [HttpClientModule, NgFor],
+  imports: [ButtonComponent, HttpClientModule, NgFor],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss',
-  providers: [HttpClientModule, ContactsService],
+  providers: [ContactsService, HttpClientModule],
 })
 export class ContactsComponent {
   contacts: any[] = [];
@@ -24,6 +25,25 @@ export class ContactsComponent {
     this.loadContacts();
   }
 
+  createContact(): void {
+    this.router.navigate(['/createContact']);
+  }
+
+  deleteContact(contactId: number): void {
+    this.contactsService.deleteContact(contactId).subscribe(
+      () => {
+        this.loadContacts();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  editContact(contactId: number): void {
+    this.router.navigate([`/editContact/${contactId}`]);
+  }
+
   loadContacts(): void {
     this.contactsService.getContacts().subscribe(
       (response) => {
@@ -33,25 +53,6 @@ export class ContactsComponent {
         console.error(error);
       }
     );
-  }
-
-  deleteContact(contactId: number): void {
-    this.contactsService.deleteContact(contactId).subscribe(
-      (response) => {
-        this.loadContacts();
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  createContact(): void {
-    this.router.navigate(['/createContact']);
-  }
-
-  editContact(contactId: number): void {
-    this.router.navigate([`/editContact/${contactId}`]);
   }
 
   viewContact(contactId: number): void {

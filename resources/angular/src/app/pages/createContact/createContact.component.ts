@@ -9,7 +9,7 @@ import { NgFor } from '@angular/common';
   imports: [HttpClientModule, NgFor],
   templateUrl: './createContact.component.html',
   styleUrl: './createContact.component.scss',
-  providers: [HttpClientModule, ContactsService],
+  providers: [ContactsService, HttpClientModule],
 })
 export class CreateContactComponent {
   constructor(private contactsService: ContactsService) {}

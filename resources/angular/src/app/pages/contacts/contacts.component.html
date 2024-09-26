@@ -6,9 +6,11 @@
       </div>
 
       <div>
-        <button type="button" class="btn btn-primary" (click)="createContact()">
-          Nuevo
-        </button>
+        <app-button
+          [label]="'Nuevo'"
+          [variant]="'primary'"
+          (onClick)="createContact()"
+        ></app-button>
       </div>
     </div>
 
@@ -34,6 +36,7 @@
           <td>{{ contact.dateOfBirth }}</td>
           <td>{{ contact.company }}</td>
           <td>{{ contact.website }}</td>
+
           <td>
             {{ contact.default_phone ? contact.default_phone[0].phone : "" }}
           </td>
@@ -45,31 +48,33 @@
               contact.default_address ? contact.default_address[0].address : ""
             }}
           </td>
+
           <td>
             <div class="actionsContainer">
-              <button
-                type="button"
-                class="btn btn-info btn-sm d-block mb-2 w-100"
-                (click)="viewContact(contact.id)"
-              >
-                Ver
-              </button>
+              <app-button
+                [label]="'Ver'"
+                [variant]="'info'"
+                [fullWidth]="true"
+                [size]="'sm'"
+                [extraClasses]="'mb-2'"
+                (onClick)="viewContact(contact.id)"
+              ></app-button>
 
-              <button
-                type="button"
-                class="btn btn-primary btn-sm d-block mb-2 w-100"
-                (click)="editContact(contact.id)"
-              >
-                Editar
-              </button>
+              <app-button
+                [label]="'Editar'"
+                [fullWidth]="true"
+                [size]="'sm'"
+                [extraClasses]="'mb-2'"
+                (onClick)="editContact(contact.id)"
+              ></app-button>
 
-              <button
-                type="button"
-                class="btn btn-secondary btn-sm d-block w-100"
-                (click)="deleteContact(contact.id)"
-              >
-                Eliminar
-              </button>
+              <app-button
+                [label]="'Eliminar'"
+                [variant]="'warning'"
+                [fullWidth]="true"
+                [size]="'sm'"
+                (onClick)="deleteContact(contact.id)"
+              ></app-button>
             </div>
           </td>
         </tr>

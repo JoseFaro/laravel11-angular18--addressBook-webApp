@@ -4,14 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-contact',
+  selector: 'app-view-contact',
   standalone: true,
   imports: [HttpClientModule, NgFor],
-  templateUrl: './editContact.component.html',
-  styleUrl: './editContact.component.scss',
-  providers: [HttpClientModule, ContactsService],
+  templateUrl: './viewContact.component.html',
+  styleUrl: './viewContact.component.scss',
+  providers: [ContactsService, HttpClientModule],
 })
-export class EditContactComponent {
+export class ViewContactComponent {
   constructor(private contactsService: ContactsService) {}
 
   ngOnInit(): void {}

@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
-import { ContactsComponent } from './contacts/contacts.component';
-import { CreateContactComponent } from './contacts/createContact/createContact.component';
-import { ViewContactComponent } from './contacts/viewContact/viewContact.component';
-import { EditContactComponent } from './contacts/editContact/editContact.component';
+
+import { ContactsComponent } from './pages/contacts/contacts.component';
+import { CreateContactComponent } from './pages/createContact/createContact.component';
+import { EditContactComponent } from './pages/editContact/editContact.component';
+import { ViewContactComponent } from './pages/viewContact/viewContact.component';
 
 export const routes: Routes = [
   { path: '', component: ContactsComponent },

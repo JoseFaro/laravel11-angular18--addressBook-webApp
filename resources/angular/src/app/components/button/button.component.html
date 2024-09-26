@@ -1,0 +1,9 @@
+<button
+  type="button"
+  [ngClass]="['btn', 'btn-' + variant, 'btn-' + size, extraClasses]"
+  [class.d-block]="fullWidth"
+  [class.w-100]="fullWidth"
+  (click)="handleOnClick()"
+>
+  {{ label }}
+</button>
