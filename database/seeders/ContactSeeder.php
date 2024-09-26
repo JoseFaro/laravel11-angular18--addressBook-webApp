@@ -14,14 +14,14 @@ class ContactSeeder extends Seeder
     private $faker = null;
 
     private $addressSeedLimit = 3;
-    private $contactSeedLimit = 25;
+    private $contactSeedLimit = 200;
     private $emailsSeedLimit = 2;
     private $phonesSeedLimit = 2;
 
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         $this->faker = Faker::create();
         $this->seedContacts();
