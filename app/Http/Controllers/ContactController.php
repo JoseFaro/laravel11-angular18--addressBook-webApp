@@ -34,7 +34,7 @@ class ContactController extends Controller
         $contact->save();
         
         // add addresses
-        $addresses = json_decode($request->addresses);
+        $addresses = $request->addresses;
         $should_add_addresses = is_array($addresses) && count($addresses);
 
         if ($should_add_addresses) {
@@ -42,8 +42,8 @@ class ContactController extends Controller
 
             foreach ($addresses as $address) {
                 $addresses_to_add[] = [
-                    'address' => $address->address,
-                    'is_default' => $address->isDefault ? 1 : 0,
+                    'address' => $address['address'],
+                    'is_default' => $address['is_default'] ? 1 : 0,
                 ];
             }
 
@@ -51,7 +51,7 @@ class ContactController extends Controller
         }
 
         // add emails
-        $emails = json_decode($request->emails);
+        $emails = $request->emails;
         $should_add_emails = is_array($emails) && count($emails);
 
         if ($should_add_emails) {
@@ -59,8 +59,8 @@ class ContactController extends Controller
 
             foreach ($emails as $email) {
                 $emails_to_add[] = [
-                    'email' => $email->email,
-                    'is_default' => $email->isDefault ? 1 : 0,
+                    'email' => $email['email'],
+                    'is_default' => $email['is_default'] ? 1 : 0,
                 ];
             }
 
@@ -68,7 +68,7 @@ class ContactController extends Controller
         }
 
         // add phones
-        $phones = json_decode($request->phones);
+        $phones = $request->phones;
         $should_add_phones = is_array($phones) && count($phones);
 
         if ($should_add_phones) {
@@ -76,8 +76,8 @@ class ContactController extends Controller
 
             foreach ($phones as $phone) {
                 $phones_to_add[] = [
-                    'phone' => $phone->phone,
-                    'is_default' => $phone->isDefault ? 1 : 0,
+                    'phone' => $phone['phone'],
+                    'is_default' => $phone['is_default'] ? 1 : 0,
                 ];
             }
 
@@ -116,7 +116,7 @@ class ContactController extends Controller
             ///////////////////////////////////////////////////////////////////
             // addresses: delete the addresses to be removed from db (not sent in request)
             
-            $addresses = json_decode($request->addresses);
+            $addresses = $request->addresses;
             $addresses_to_upsert = [];
             $addresses_ids_to_delete = [];
             $addresses_ids_to_update = [];
@@ -143,9 +143,9 @@ class ContactController extends Controller
             if (is_array($addresses)) {
                 foreach ($addresses as $address) {
                     $addresses_to_upsert[] = [
-                        'id' => isset($address->id) ? $address->id : null,
-                        'address' => $address->address,
-                        'is_default' => $address->isDefault ? 1 : 0,
+                        'id' => isset($address['id']) ? $address['id'] : null,
+                        'address' => $address['address'],
+                        'is_default' => $address['is_default'] ? 1 : 0,
                     ];
                 }
             }
@@ -155,7 +155,7 @@ class ContactController extends Controller
             ///////////////////////////////////////////////////////////////////
             // emails: delete the emails to be removed from db (not sent in request)
     
-            $emails = json_decode($request->emails);
+            $emails = $request->emails;
             $emails_to_upsert = [];
             $emails_ids_to_delete = [];
             $emails_ids_to_update = [];
@@ -182,9 +182,9 @@ class ContactController extends Controller
             if (is_array($emails)) {
                 foreach ($emails as $email) {
                     $emails_to_upsert[] = [
-                        'id' => isset($email->id) ? $email->id : null,
-                        'email' => $email->email,
-                        'is_default' => $email->isDefault ? 1 : 0,
+                        'id' => isset($email['id']) ? $email['id'] : null,
+                        'email' => $email['email'],
+                        'is_default' => $email['is_default'] ? 1 : 0,
                     ];
                 }
             }
@@ -194,7 +194,7 @@ class ContactController extends Controller
             ///////////////////////////////////////////////////////////////////
             // phones: delete the phones to be removed from db (not sent in request)
 
-            $phones = json_decode($request->phones);
+            $phones = $request->phones;
             $phones_to_upsert = [];
             $phones_ids_to_delete = [];
             $phones_ids_to_update = [];
@@ -221,9 +221,9 @@ class ContactController extends Controller
             if (is_array($phones)) {
                 foreach ($phones as $phone) {
                     $phones_to_upsert[] = [
-                        'id' => isset($phone->id) ? $phone->id : null,
-                        'phone' => $phone->phone,
-                        'is_default' => $phone->isDefault ? 1 : 0,
+                        'id' => isset($phone['id']) ? $phone['id'] : null,
+                        'phone' => $phone['phone'],
+                        'is_default' => $phone['is_default'] ? 1 : 0,
                     ];
                 }
             }

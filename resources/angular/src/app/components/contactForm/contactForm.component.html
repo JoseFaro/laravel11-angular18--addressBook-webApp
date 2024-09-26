@@ -1,4 +1,4 @@
-<div>
+<div class="appContactFormComponent">
   <h3 *ngIf="isCreate" class="mb-4">CREAR CONTACTO</h3>
   <h3 *ngIf="isUpdate" class="mb-4">ACTUALIZAR CONTACTO</h3>
 
@@ -51,6 +51,171 @@
         formControlName="notes"
         rows="3"
       ></textarea>
+    </div>
+
+    <div formArrayName="emails" class="mb-5">
+      <h4 class="mb-4">
+        Correos electrónicos
+        <span
+          class="addNewExtraInfo text-primary"
+          (click)="handleOnAddExtraInfo('email')"
+          >[+] agregar</span
+        >
+      </h4>
+
+      <div *ngFor="let email of emails.controls; let i = index" class="d-flex">
+        <div [formGroupName]="i" class="mb-4">
+          <div class="d-flex">
+            <div class="me-4">
+              <label for="" class="form-label">Correo electrónico</label>
+              <input
+                type="text"
+                class="form-control"
+                id=""
+                formControlName="email"
+              />
+            </div>
+
+            <div class="radioInputContainer">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="FormControlCheckboxEmail-{{ i }}"
+                  formControlName="is_default"
+                  (click)="handleOnDefaultInfoClick('email', i, $event)"
+                />
+                <label
+                  class="form-check-label"
+                  for="FormControlCheckboxEmail-{{ i }}"
+                >
+                  Predeterminado
+                </label>
+              </div>
+            </div>
+
+            <div class="removeExtraInfoContainer">
+              <span
+                class="removeExtraInfo text-primary"
+                (click)="handleOnRemoveExtraInfo('email', i)"
+                >[-] eliminar</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div formArrayName="phones" class="mb-5">
+      <h4 class="mb-4">
+        Teléfonos
+        <span
+          class="addNewExtraInfo text-primary"
+          (click)="handleOnAddExtraInfo('phone')"
+          >[+] agregar</span
+        >
+      </h4>
+
+      <div *ngFor="let phone of phones.controls; let i = index" class="d-flex">
+        <div [formGroupName]="i" class="mb-4">
+          <div class="d-flex">
+            <div class="me-4">
+              <label for="" class="form-label">Teléfono</label>
+              <input
+                type="text"
+                class="form-control"
+                id=""
+                formControlName="phone"
+              />
+            </div>
+
+            <div class="radioInputContainer">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="FormControlCheckboxPhone-{{ i }}"
+                  formControlName="is_default"
+                  (click)="handleOnDefaultInfoClick('phone', i, $event)"
+                />
+                <label
+                  class="form-check-label"
+                  for="FormControlCheckboxPhone-{{ i }}"
+                >
+                  Predeterminado
+                </label>
+              </div>
+            </div>
+
+            <div class="removeExtraInfoContainer">
+              <span
+                class="removeExtraInfo text-primary"
+                (click)="handleOnRemoveExtraInfo('phone', i)"
+                >[-] eliminar</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div formArrayName="addresses" class="mb-5">
+      <h4 class="mb-4">
+        Direcciones
+        <span
+          class="addNewExtraInfo text-primary"
+          (click)="handleOnAddExtraInfo('address')"
+          >[+] agregar</span
+        >
+      </h4>
+
+      <div
+        *ngFor="let address of addresses.controls; let i = index"
+        class="d-flex"
+      >
+        <div [formGroupName]="i" class="mb-4">
+          <div class="d-flex">
+            <div class="me-4">
+              <label for="" class="form-label">Dirección</label>
+              <input
+                type="text"
+                class="form-control"
+                id=""
+                formControlName="address"
+              />
+            </div>
+
+            <div class="radioInputContainer">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="FormControlCheckboxAddress-{{ i }}"
+                  formControlName="is_default"
+                  (click)="handleOnDefaultInfoClick('address', i, $event)"
+                />
+                <label
+                  class="form-check-label"
+                  for="FormControlCheckboxAddress-{{ i }}"
+                >
+                  Predeterminado
+                </label>
+              </div>
+            </div>
+
+            <div class="removeExtraInfoContainer">
+              <span
+                class="removeExtraInfo text-primary"
+                (click)="handleOnRemoveExtraInfo('address', i)"
+                >[-] eliminar</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <app-button

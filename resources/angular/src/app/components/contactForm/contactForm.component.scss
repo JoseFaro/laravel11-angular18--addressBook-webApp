@@ -1,0 +1,29 @@
+.appContactFormComponent {
+  .addNewExtraInfo,
+  .removeExtraInfo {
+    font-weight: 200;
+    font-size: 18px;
+    margin-left: 10px;
+    position: relative;
+    top: -3px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .removeExtraInfoContainer {
+    margin-left: 20px;
+    position: relative;
+    top: 39px;
+
+    .removeExtraInfo {
+      font-size: 16px;
+    }
+  }
+
+  .radioInputContainer {
+    position: relative;
+    top: 38px;
+  }
+}
