@@ -20,6 +20,9 @@ class ContactController extends Controller
                 with('defaultAddress')
                 ->with('defaultEmail')
                 ->with('defaultPhone')
+                ->with('addresses')
+                ->with('emails')
+                ->with('phones')
                 ->get();
     }
 
