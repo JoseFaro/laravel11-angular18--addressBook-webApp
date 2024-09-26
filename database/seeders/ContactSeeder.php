@@ -30,12 +30,15 @@ class ContactSeeder extends Seeder
     private function seedContacts()
     {
         for ($i = 0; $i < $this->contactSeedLimit; $i++) {
+            $now = Carbon::now()->format('Y-m-d H:i:s');
             $contact_id = DB::table('contacts')->insertGetId([
                 'name' => $this->faker->name,
                 'dateOfBirth' => $this->faker->dateTime->format('Y-m-d'),
                 'website' => $this->faker->url,
                 'company' => $this->faker->company,
                 'notes' => $this->faker->sentence,
+                'created_at' => $now,
+                'updated_at' => $now,
             ]);
 
             $this->seedContactAddresses($contact_id);
