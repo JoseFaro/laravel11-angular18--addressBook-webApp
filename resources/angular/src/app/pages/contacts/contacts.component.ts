@@ -5,7 +5,7 @@ import { ContactsService } from '../../services/contacts.service';
 import { filterContacts } from './helpers/filterContacts';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -17,6 +17,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     HttpClientModule,
     FormsModule,
     NgFor,
+    NgIf,
     ScrollingModule,
   ],
   templateUrl: './contacts.component.html',
@@ -24,6 +25,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   providers: [ContactsService, HttpClientModule],
 })
 export class ContactsComponent {
+  isLoading: boolean = true;
   contacts: any[] = [];
   filteredContacts: any[] = [];
 
@@ -86,6 +88,8 @@ export class ContactsComponent {
             this.contacts
           );
         });
+
+        this.isLoading = false;
       },
       (error) => {
         console.error(error);

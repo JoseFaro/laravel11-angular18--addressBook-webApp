@@ -24,7 +24,11 @@
       </div>
     </div>
 
-    <cdk-virtual-scroll-viewport itemSize="120" class="viewport">
+    <cdk-virtual-scroll-viewport
+      *ngIf="!isLoading"
+      itemSize="120"
+      class="viewport"
+    >
       <table class="table table-striped">
         <thead>
           <tr>
@@ -106,5 +110,7 @@
         </tbody>
       </table>
     </cdk-virtual-scroll-viewport>
+
+    <p *ngIf="isLoading">Cargando...</p>
   </div>
 </div>

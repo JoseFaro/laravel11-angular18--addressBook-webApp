@@ -14,7 +14,7 @@ class ContactSeeder extends Seeder
     private $faker = null;
 
     private $addressSeedLimit = 3;
-    private $contactSeedLimit = 200;
+    private $contactSeedLimit = 500;
     private $emailsSeedLimit = 2;
     private $phonesSeedLimit = 2;
 
