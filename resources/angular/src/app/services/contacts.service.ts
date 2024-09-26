@@ -10,13 +10,18 @@ export class ContactsService {
 
   constructor(private http: HttpClient) {}
 
+  getContact(id: number): Observable<any> {
+    const url = `${this.basePath}/show/${id}`;
+    return this.http.get<any>(url);
+  }
+
   getContacts(): Observable<any> {
     const url = `${this.basePath}`;
     return this.http.get<any>(url);
   }
 
   deleteContact(id: number): Observable<any> {
-    const url = `${this.basePath}/contacts/destroy`;
+    const url = `${this.basePath}/destroy`;
     return this.http.post<any>(url, { id });
   }
 }

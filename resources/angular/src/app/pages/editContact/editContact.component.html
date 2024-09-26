@@ -1,5 +1,6 @@
 <div class="appEditContact">
-  <h3 class="mb-4">EDITAR CONTACTO</h3>
-
-  formulario aquí
+  <app-contact-form
+    [contact]="contact"
+    (onSave)="handleOnUpdate($event)"
+  ></app-contact-form>
 </div>
