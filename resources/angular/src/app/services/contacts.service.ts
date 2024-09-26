@@ -24,4 +24,14 @@ export class ContactsService {
     const url = `${this.basePath}/destroy`;
     return this.http.post<any>(url, { id });
   }
+
+  storeContact(contact: any): Observable<any> {
+    const url = `${this.basePath}/store`;
+    return this.http.post<any>(url, contact);
+  }
+
+  updateContact(contact: any): Observable<any> {
+    const url = `${this.basePath}/update/${contact.id}`;
+    return this.http.post<any>(url, contact);
+  }
 }

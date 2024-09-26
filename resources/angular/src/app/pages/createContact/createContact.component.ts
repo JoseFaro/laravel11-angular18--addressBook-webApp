@@ -4,6 +4,7 @@ import { ContactFormComponent } from '../../components/contactForm/contactForm.c
 import { ContactsService } from '../../services/contacts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-contact',
@@ -13,12 +14,20 @@ import { NgFor } from '@angular/common';
   providers: [ContactsService, HttpClientModule],
 })
 export class CreateContactComponent {
-  constructor(private contactsService: ContactsService) {}
-
-  ngOnInit(): void {}
+  constructor(
+    private contactsService: ContactsService,
+    private router: Router
+  ) {}
 
   handleOnCreate(formData: any): void {
-    console.log('sent');
-    console.log(formData);
+    this.contactsService.storeContact(formData).subscribe(
+      (response) => {
+        alert('Contacto creado');
+        this.router.navigate([`/editContact/${response.id}`]);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }

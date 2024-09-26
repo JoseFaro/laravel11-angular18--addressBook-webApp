@@ -24,16 +24,18 @@ export class ContactFormComponent {
   @Input() contact?: any = {};
   @Output() onSave = new EventEmitter<void>();
 
-  isCreate: boolean = false;
+  isCreate: boolean = true;
   isUpdate: boolean = false;
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
+      id: [''],
       name: ['', [Validators.required]],
       dateOfBirth: [''],
       company: [''],
       website: [''],
+      notes: [''],
     });
   }
 

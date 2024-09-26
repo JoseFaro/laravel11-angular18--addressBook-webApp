@@ -37,6 +37,13 @@ export class EditContactComponent {
   }
 
   handleOnUpdate(formData: any): void {
-    console.log(formData);
+    this.contactsService.updateContact(formData).subscribe(
+      (response) => {
+        alert('Contacto actualizado');
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }
