@@ -12,12 +12,12 @@ pasos:
 
 -   run: **composer install**
 
-    2.- Crear base de datos y actualizar archivo
+2.- Crear base de datos y actualizar archivo
 
 -   ajustar datos en archivo .env
 -   copiar del archivo **.env.example** y ajustar
 
-    3.- Correr migraciones y seeds
+3.- Correr migraciones y seeds
 
 -   run: **php artisan migrate**
 -   run: **php artisan db:seed**
@@ -35,7 +35,7 @@ pasos:
 -   ir a la carpeta **resources/angular**
 -   run: **npm install**
 
-    2.- Iniciar aplicación en Angular
+2.- Iniciar aplicación en Angular
 
 -   run: **ng serve**
 -   abrir pagina: http://localhost:4200
