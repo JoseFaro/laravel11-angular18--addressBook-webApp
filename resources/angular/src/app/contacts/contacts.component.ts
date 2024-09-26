@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ContactsService } from '../services/contacts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
@@ -14,7 +15,10 @@ import { NgFor } from '@angular/common';
 export class ContactsComponent {
   contacts: any[] = [];
 
-  constructor(private contactsService: ContactsService) {}
+  constructor(
+    private contactsService: ContactsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadContacts();
@@ -34,12 +38,23 @@ export class ContactsComponent {
   deleteContact(contactId: number): void {
     this.contactsService.deleteContact(contactId).subscribe(
       (response) => {
-        console.log('deleted');
         this.loadContacts();
       },
       (error) => {
         console.error(error);
       }
     );
+  }
+
+  createContact(): void {
+    this.router.navigate(['/createContact']);
+  }
+
+  editContact(contactId: number): void {
+    this.router.navigate([`/editContact/${contactId}`]);
+  }
+
+  viewContact(contactId: number): void {
+    this.router.navigate([`/viewContact/${contactId}`]);
   }
 }

@@ -1,57 +1,79 @@
 <div class="appContacts">
-  <h3 class="mb-4">CONTACTOS</h3>
+  <div class="container">
+    <div class="d-flex justify-content-between mb-4">
+      <div>
+        <h3>CONTACTOS</h3>
+      </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cumpleaños</th>
-        <th scope="col">Empresa</th>
-        <th scope="col">Pagina web</th>
-        <th scope="col">Teléfono</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Dirección</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
+      <div>
+        <button type="button" class="btn btn-primary" (click)="createContact()">
+          Nuevo
+        </button>
+      </div>
+    </div>
 
-    <tbody>
-      <tr *ngFor="let contact of contacts; let i = index">
-        <th scope="row">{{ contact.id }}</th>
-        <td>{{ contact.name }}</td>
-        <td>{{ contact.dateOfBirth }}</td>
-        <td>{{ contact.company }}</td>
-        <td>{{ contact.website }}</td>
-        <td>
-          {{ contact.default_phone ? contact.default_phone[0].phone : "" }}
-        </td>
-        <td>
-          {{ contact.default_email ? contact.default_email[0].email : "" }}
-        </td>
-        <td>
-          {{
-            contact.default_address ? contact.default_address[0].address : ""
-          }}
-        </td>
-        <td>
-          <div class="actionsContainer">
-            <button type="button" class="btn btn-info btn-sm me-2">Ver</button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Cumpleaños</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Pagina web</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Dirección</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
 
-            <button type="button" class="btn btn-primary btn-sm me-2">
-              Editar
-            </button>
+      <tbody>
+        <tr *ngFor="let contact of contacts; let i = index">
+          <th scope="row">{{ contact.id }}</th>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.dateOfBirth }}</td>
+          <td>{{ contact.company }}</td>
+          <td>{{ contact.website }}</td>
+          <td>
+            {{ contact.default_phone ? contact.default_phone[0].phone : "" }}
+          </td>
+          <td>
+            {{ contact.default_email ? contact.default_email[0].email : "" }}
+          </td>
+          <td>
+            {{
+              contact.default_address ? contact.default_address[0].address : ""
+            }}
+          </td>
+          <td>
+            <div class="actionsContainer">
+              <button
+                type="button"
+                class="btn btn-info btn-sm d-block mb-2 w-100"
+                (click)="viewContact(contact.id)"
+              >
+                Ver
+              </button>
 
-            <button
-              type="button"
-              class="btn btn-secondary btn-sm"
-              (click)="deleteContact(contact.id)"
-            >
-              Eliminar
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm d-block mb-2 w-100"
+                (click)="editContact(contact.id)"
+              >
+                Editar
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm d-block w-100"
+                (click)="deleteContact(contact.id)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
