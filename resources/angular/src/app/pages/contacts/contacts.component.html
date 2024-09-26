@@ -38,14 +38,20 @@
           <td>{{ contact.website }}</td>
 
           <td>
-            {{ contact.default_phone ? contact.default_phone[0].phone : "" }}
-          </td>
-          <td>
-            {{ contact.default_email ? contact.default_email[0].email : "" }}
+            {{
+              contact.default_phone.length ? contact.default_phone[0].phone : ""
+            }}
           </td>
           <td>
             {{
-              contact.default_address ? contact.default_address[0].address : ""
+              contact.default_email.length ? contact.default_email[0].email : ""
+            }}
+          </td>
+          <td>
+            {{
+              contact.default_address.length
+                ? contact.default_address[0].address
+                : ""
             }}
           </td>
 
