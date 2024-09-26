@@ -17,9 +17,25 @@ export class ContactsComponent {
   constructor(private contactsService: ContactsService) {}
 
   ngOnInit(): void {
+    this.loadContacts();
+  }
+
+  loadContacts(): void {
     this.contactsService.getContacts().subscribe(
       (response) => {
         this.contacts = response;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  deleteContact(contactId: number): void {
+    this.contactsService.deleteContact(contactId).subscribe(
+      (response) => {
+        console.log('deleted');
+        this.loadContacts();
       },
       (error) => {
         console.error(error);

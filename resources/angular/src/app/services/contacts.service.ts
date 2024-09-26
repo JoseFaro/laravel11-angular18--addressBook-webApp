@@ -12,4 +12,9 @@ export class ContactsService {
     const url = 'http://127.0.0.1:8000/api/contacts';
     return this.http.get<any>(url);
   }
+
+  deleteContact(id: number): Observable<any> {
+    const url = 'http://127.0.0.1:8000/api/contacts/destroy';
+    return this.http.post<any>(url, { id });
+  }
 }
